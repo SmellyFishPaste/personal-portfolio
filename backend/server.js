@@ -1,58 +1,63 @@
 const express = require("express");
-const cors = require("cors");
 const nodemailer = require("nodemailer");
+const cors = require("cors");
 
 const app = express();
-app.use(cors());
+const PORT = process.env.PORT || 10000;
+
+// CORS Configuration — allows your GitHub Pages frontend
+app.use(cors({
+  origin: "https://smellyfishpaste.github.io",
+  methods: ["POST"],
+  allowedHeaders: ["Content-Type"]
+}));
+
 app.use(express.json());
 
-// Environment variables for secure deployment
-const EMAIL_USER = process.env.EMAIL_USER;
-const EMAIL_PASS = process.env.EMAIL_PASS;
-
+// Nodemailer setup
 const contactEmail = nodemailer.createTransport({
   service: 'gmail',
   auth: {
-    user: EMAIL_USER,
-    pass: EMAIL_PASS,
+    user: "shadowhawk851@gmail.com",
+    pass: "pjtavknamblunekz", // App Password
   },
 });
 
 contactEmail.verify((error) => {
   if (error) {
-    console.error("Email server error:", error);
+    console.log("Nodemailer error:", error);
   } else {
     console.log("Ready to send email");
   }
 });
 
+// POST endpoint
 app.post("/contact", (req, res) => {
   const { firstName, lastName, email, phone, message } = req.body;
 
   const mail = {
-    from: `${firstName} ${lastName}`,
-    to: EMAIL_USER,
-    subject: "Contact Form Submission - Portfolio",
+    from: email,
+    to: "shadowhawk851@gmail.com",
+    subject: "Contact Form Submission",
     html: `
-      <p>Name: ${firstName} ${lastName}</p>
-      <p>Email: ${email}</p>
-      <p>Phone: ${phone}</p>
-      <p>Message: ${message}</p>
+      <p><strong>Name:</strong> ${firstName} ${lastName}</p>
+      <p><strong>Email:</strong> ${email}</p>
+      <p><strong>Phone:</strong> ${phone}</p>
+      <p><strong>Message:</strong> ${message}</p>
     `,
   };
 
   contactEmail.sendMail(mail, (error) => {
     if (error) {
-      console.error("Send failed:", error);
-      res.status(500).json({ code: 500, message: "Failed to send email." });
+      console.log("Send error:", error);
+      res.status(500).json({ code: 500, message: "Failed to send message." });
     } else {
-      res.status(200).json({ code: 200, message: "Message Sent" });
+      res.status(200).json({ code: 200, message: "Message sent successfully" });
     }
   });
 });
 
-// ✅ Listen on dynamic port Render provides
-const PORT = process.env.PORT || 5000;
+// Start server
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
