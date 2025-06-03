@@ -16,7 +16,7 @@ const contactEmail = nodemailer.createTransport({
   service: 'gmail',
   auth: {
     user: "shadowhawk851@gmail.com",
-    pass: ""
+    pass: "pjtavknamblunekz"
   },
 });
 
@@ -35,7 +35,7 @@ router.post("/contact", (req, res) => {
   const phone = req.body.phone;
   const mail = {
     from: name,
-    to: "********@gmail.com",
+    to: "shadowhawk851@gmail.com",
     subject: "Contact Form Submission - Portfolio",
     html: `<p>Name: ${name}</p>
            <p>Email: ${email}</p>
@@ -43,10 +43,11 @@ router.post("/contact", (req, res) => {
            <p>Message: ${message}</p>`,
   };
   contactEmail.sendMail(mail, (error) => {
-    if (error) {
-      res.json(error);
-    } else {
-      res.json({ code: 200, status: "Message Sent" });
-    }
-  });
+  if (error) {
+    console.error("Email send error:", error);
+    res.status(500).json({ code: 500, message: "Failed to send email." }); // ✅ use this instead
+  } else {
+    res.status(200).json({ code: 200, message: "Message Sent" });
+  }
+});
 });

@@ -11,7 +11,7 @@ export const Banner = () => {
   const [text, setText] = useState('');
   const [delta, setDelta] = useState(300 - Math.random() * 100);
   const [index, setIndex] = useState(1);
-  const toRotate = [ "Web Developer", "Web Designer", "UI/UX Designer" ];
+  const toRotate = [ "Web Developer", "Welder", "Mechanic" ];
   const period = 2000;
 
   useEffect(() => {
@@ -56,7 +56,7 @@ export const Banner = () => {
               {({ isVisible }) =>
               <div className={isVisible ? "animate__animated animate__fadeIn" : ""}>
                 <span className="tagline">Welcome to my Portfolio</span>
-                <h1>{`Hi! I'm Nathanael`} <span className="txt-rotate" dataPeriod="1000" data-rotate='[ "Web Developer", "Web Designer", "UI/UX Designer" ]'><span className="wrap">{text}</span></span></h1>
+                <h1>{`Hi! I'm Nathanael`} <span className="txt-rotate" dataPeriod="1000" data-rotate='[ "Web Developer", "Welder", "Mechanic" ]'><span className="wrap">{text}</span></span></h1>
                   <p>Hello my name is Nathanael I'm looking to secure a challenging position as a Computer Scientist utilizing my expertise in software development,
                       data analysis, and problem-solving. Looking for a role where I can learn new skills by working with
                       others. </p>
