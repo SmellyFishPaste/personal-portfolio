@@ -18,8 +18,8 @@ app.use(express.json());
 const contactEmail = nodemailer.createTransport({
   service: 'gmail',
   auth: {
-    user: "shadowhawk851@gmail.com",
-    pass: "pjtavknamblunekz", // App Password
+    user: process.env.EMAIL_USER,
+    pass: process.env.EMAIL_PASS
   },
 });
 
