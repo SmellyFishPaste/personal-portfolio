@@ -23,10 +23,17 @@ export const Projects = () => {
       url: "https://github.com/SmellyFishPaste/personal-portfolio"
     },
     {
+      title: "Voting Regerstration data visualization",
+      description: "A data visualization project that uses Python and matplotlib to visualize voting registration data for Pitt County.",
+      imgUrl: projImg4,
+      url: "https://github.com/SmellyFishPaste/VotingDataProject_Pitt_County/blob/main/VotingDataProject-main/Code/final_project_Nathanael_Prokop.py"
+    },
+    {
       title: "test slot",
       description: "test slot project description",
       imgUrl: projImg3,
     },
+    
     
   ];
 
@@ -51,6 +58,10 @@ export const Projects = () => {
                     <Nav.Item>
                       <Nav.Link eventKey="third">Tab 3</Nav.Link>
                     </Nav.Item>
+                    <Nav.Item>
+                      <Nav.Link eventKey="forth">tab 4</Nav.Link>
+                    </Nav.Item>
+
                   </Nav>
                   <Tab.Content id="slideInUp" className={isVisible ? "animate__animated animate__slideInUp" : ""}>
                     <Tab.Pane eventKey="first">
