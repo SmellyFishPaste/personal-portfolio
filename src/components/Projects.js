@@ -3,6 +3,7 @@ import { ProjectCard } from "./ProjectCard";
 import projImg1 from "../assets/img/project-img1.png";
 import projImg2 from "../assets/img/project-img2.png";
 import projImg3 from "../assets/img/project-img3.png";
+import projImg4 from "../assets/img/project-img4.png";
 import colorSharp2 from "../assets/img/color-sharp2.png";
 import 'animate.css';
 import TrackVisibility from 'react-on-screen';
@@ -23,15 +24,15 @@ export const Projects = () => {
       url: "https://github.com/SmellyFishPaste/personal-portfolio"
     },
     {
+      title: "test slot",
+      description: "test slot project description",
+      imgUrl: projImg3,
+    },
+    {
       title: "Voting Regerstration data visualization",
       description: "A data visualization project that uses Python and matplotlib to visualize voting registration data for Pitt County.",
       imgUrl: projImg4,
       url: "https://github.com/SmellyFishPaste/VotingDataProject_Pitt_County/blob/main/VotingDataProject-main/Code/final_project_Nathanael_Prokop.py"
-    },
-    {
-      title: "test slot",
-      description: "test slot project description",
-      imgUrl: projImg3,
     },
     
     
